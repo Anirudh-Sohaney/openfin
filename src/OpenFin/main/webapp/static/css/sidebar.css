@@ -1,0 +1,68 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   OpenFin Webapp — Sidebar Styles
+   Agent groups, subagent indentation, status polling display
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.sidebar-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: var(--accent);
+    letter-spacing: 1px;
+}
+
+.agent-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.agent {
+    margin-bottom: 18px;
+}
+
+.agent-heading {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.subagent {
+    padding-left: 14px;
+    margin-bottom: 8px;
+}
+
+.subagent-name {
+    font-size: 1.1rem;
+}
+
+.status {
+    font-style: italic;
+    font-size: 0.75rem;
+    opacity: 0.6;
+    padding-left: 18px;
+    margin-top: 2px;
+}
+
+/* Status indicator dot */
+.status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.status-dot.idle {
+    background: #666;
+}
+
+.status-dot.active {
+    background: var(--accent);
+    animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 0.4; }
+    50%      { opacity: 1; }
+}

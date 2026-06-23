@@ -1,0 +1,88 @@
+{
+  "page": {
+    "width_mm": 210,
+    "height_mm": 297,
+    "orientation": "P",
+    "unit": "mm",
+    "format": "A4",
+    "margin_left": 25,
+    "margin_right": 25,
+    "margin_top": 20,
+    "margin_bottom": 20
+  },
+
+  "title_header": {
+    "enabled": true,
+    "font_size": 20,
+    "style": "B",
+    "align": "L",
+    "line_height_mm": 10,
+    "spacing_after_mm": 6,
+    "separator_line": true,
+    "separator_thickness_mm": 0.6
+  },
+
+  "metadata_line": {
+    "enabled": true,
+    "font_size": 8,
+    "style": "I",
+    "align": "L",
+    "spacing_after_mm": 8,
+    "label_separator": " | ",
+    "fields": ["source_file", "generated_at", "classification"]
+  },
+
+  "content": {
+    "heading_levels": {
+      "1": {
+        "font_size": 14,
+        "style": "B",
+        "spacing_before_mm": 6,
+        "spacing_after_mm": 3,
+        "separator_line": true
+      },
+      "2": {
+        "font_size": 12,
+        "style": "B",
+        "spacing_before_mm": 5,
+        "spacing_after_mm": 2,
+        "separator_line": false
+      },
+      "3": {
+        "font_size": 11,
+        "style": "BI",
+        "spacing_before_mm": 4,
+        "spacing_after_mm": 2,
+        "separator_line": false
+      }
+    },
+    "body_text": {
+      "font_size": 10,
+      "style": "",
+      "line_height_mm": 5.5,
+      "paragraph_spacing_mm": 2,
+      "align": "L"
+    },
+    "section_separator": {
+      "line_width_mm": 0.3,
+      "y_padding_mm": 3
+    }
+  },
+
+  "footer": {
+    "y_from_bottom_mm": 15,
+    "text": "Page {current} of {total}",
+    "font_size": 8,
+    "style": "I"
+  },
+
+  "colors": {
+    "black": [0, 0, 0],
+    "dark_grey": [50, 50, 50],
+    "grey": [120, 120, 120],
+    "light_grey": [180, 180, 180],
+    "white": [255, 255, 255]
+  },
+
+  "classification_text": "Confidential — For Internal Use"
+}

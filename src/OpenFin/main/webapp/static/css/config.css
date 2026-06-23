@@ -1,0 +1,169 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   OpenFin Webapp — Config Page Styles
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.config-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 480px;
+}
+
+.config-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.config-row label {
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.config-section-divider {
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    letter-spacing: 2px;
+    margin: 4px 0;
+    color: var(--accent);
+}
+
+.toggle-group {
+    display: flex;
+    gap: 8px;
+}
+
+.toggle-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--fg);
+    font-family: Consolas, "Courier New", monospace;
+    padding: 6px 16px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.toggle-btn:hover {
+    border-color: var(--accent);
+}
+
+.toggle-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.config-field-row {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+}
+
+.config-field-row input[type="text"],
+.config-field-row input[type="password"] {
+    flex: 1;
+}
+
+.config-row input[type="text"],
+.config-row input[type="password"],
+.config-select {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--fg);
+    font-family: Consolas, "Courier New", monospace;
+    padding: 8px 10px;
+    outline: none;
+    font-size: 0.85rem;
+    transition: border-color 0.15s;
+}
+
+.config-row input[type="text"]:focus,
+.config-row input[type="password"]:focus,
+.config-select:focus {
+    border-color: var(--accent);
+}
+
+.config-row input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.config-select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23e0e0e0'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+}
+
+[data-theme="light"] .config-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%231a1a1a'/%3E%3C/svg%3E");
+}
+
+.config-select option {
+    background: var(--bg);
+    color: var(--fg);
+}
+
+.config-change-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-family: Consolas, "Courier New", monospace;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.config-change-btn:hover {
+    background: var(--hover);
+    border-color: var(--accent);
+}
+
+.config-save-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--fg);
+    font-family: Consolas, "Courier New", monospace;
+    padding: 8px 24px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    align-self: flex-start;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.config-save-btn:hover {
+    background: var(--hover);
+    border-color: var(--accent);
+}
+
+.config-status {
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+.config-status.success {
+    color: var(--accent);
+}
+
+.config-status.error {
+    color: #ff3333;
+}
+
+.config-warning {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    margin-top: 4px;
+}
+
+.config-validation-error {
+    font-size: 0.75rem;
+    color: #ff3333;
+    margin-top: 2px;
+}

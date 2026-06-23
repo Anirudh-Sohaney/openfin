@@ -1,0 +1,64 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   OpenFin Webapp — File Card Component Styles
+   Used by both Reports and Insights pages
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.file-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.file-card {
+    display: flex;
+    align-items: center;
+    height: 11vh;
+    border: 1px solid var(--border);
+    padding: 0 20px;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+}
+
+.file-card:hover {
+    border-color: var(--accent);
+    background: var(--hover);
+}
+
+.file-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.file-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.file-card-desc {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-card-delete {
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 4px 0 16px;
+    user-select: none;
+    transition: color 0.15s;
+}
+
+.file-card-delete:hover {
+    color: #ff3333;
+}
+
+/* Card removal animation */
+.file-card.removing {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.3s, transform 0.3s;
+}

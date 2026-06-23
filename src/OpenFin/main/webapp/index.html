@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenFin</title>
+    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/sidebar.css">
+    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="static/css/file-card.css">
+    <link rel="stylesheet" href="static/css/chat.css">
+    <link rel="stylesheet" href="static/css/config.css">
+    <link rel="stylesheet" href="static/css/modal.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ── Sidebar ────────────────────────────────────────────────────── -->
+        <aside class="sidebar">
+            <div class="sidebar-title">OpenFin</div>
+            <nav class="agent-nav">
+                <!-- Agent 1 -->
+                <div class="agent">
+                    <div class="agent-heading">Agent 1</div>
+                    <div class="subagent">
+                        <div class="subagent-name">subAgent 1</div>
+                        <div class="status">idle</div>
+                    </div>
+                    <div class="subagent">
+                        <div class="subagent-name">subAgent 2</div>
+                        <div class="status">idle</div>
+                    </div>
+                    <div class="subagent">
+                        <div class="subagent-name">subAgent 3</div>
+                        <div class="status">idle</div>
+                    </div>
+                    <div class="subagent">
+                        <div class="subagent-name">subAgent 4</div>
+                        <div class="status">idle</div>
+                    </div>
+                    <div class="subagent">
+                        <div class="subagent-name">subAgent 5</div>
+                        <div class="status">idle</div>
+                    </div>
+                </div>
+                <!-- Agent 2 -->
+                <div class="agent">
+                    <div class="agent-heading">Agent 2</div>
+                    <div class="subagent">
+                        <div class="subagent-name">subAgent 1</div>
+                        <div class="status">idle</div>
+                    </div>
+                    <div class="subagent">
+                        <div class="subagent-name">subAgent 2</div>
+                        <div class="status">idle</div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- ── Separator ──────────────────────────────────────────────────── -->
+        <div class="separator"></div>
+
+        <!-- ── Main Content ───────────────────────────────────────────────── -->
+        <main class="main-content">
+            <!-- Page Header (hidden on home) -->
+            <div class="page-header" id="pageHeader">
+                <button class="back-arrow" onclick="navigate('home')">&larr;</button>
+                <span class="header-title" id="headerTitle"></span>
+            </div>
+
+            <!-- ═══════ Home Page ═══════ -->
+            <div class="page active" id="page-home">
+                <div class="home-center">
+                    <h1 class="home-title">OpenFin</h1>
+                    <div class="home-nav">
+                        <button onclick="navigate('reports')">Reports</button>
+                        <button onclick="navigate('insights')">Insights</button>
+                        <button onclick="navigate('chatbot')">Agent</button>
+                        <button onclick="navigate('config')">Config</button>
+                    </div>
+                    <button class="upload-btn" id="uploadBtn">Upload File</button>
+                    <input type="file" id="fileInput" accept=".csv,.xlsx,.xls" style="display:none">
+                    <div class="upload-status" id="uploadStatus"></div>
+                </div>
+            </div>
+
+            <!-- ═══════ Reports Page ═══════ -->
+            <div class="page" id="page-reports">
+                <div class="file-list" id="reports-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">📄</div>
+                        <div class="empty-text">No reports generated yet. Upload data to get started.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════ Insights Page ═══════ -->
+            <div class="page" id="page-insights">
+                <div class="file-list" id="insights-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">💡</div>
+                        <div class="empty-text">No insights generated yet. Upload data to get started.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════ Chatbot Page ═══════ -->
+            <div class="page" id="page-chatbot">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <span class="chat-header-title">Agent 2</span>
+                        <button class="chat-clear-btn" id="chatClearBtn">Clear conversation</button>
+                    </div>
+                    <div class="chat-msgs" id="chatMsgs">
+                        <div class="msg msg-bot">Hello! I'm OpenFin's financial advisor. Ask me anything about your data.</div>
+                    </div>
+                    <form autocomplete="off" onsubmit="return false" style="display:flex;flex-direction:column">
+                    <!-- Hidden dummy password field to prevent Chrome save-password popup -->
+                    <input type="password" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="new-password" readonly onfocus="this.blur()">
+                    <div class="chat-input-row">
+                        <input type="text" id="chatInput" placeholder="Ask a question about your financial data..." autocomplete="off">
+                        <button type="button" id="chatSendBtn">Send</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ═══════ Config Page ═══════ -->
+            <div class="page" id="page-config">
+                <div class="config-form">
+                    <div class="config-row">
+                        <label>Theme</label>
+                        <div class="toggle-group">
+                            <button class="toggle-btn active" data-theme-val="dark">Dark</button>
+                            <button class="toggle-btn" data-theme-val="light">Light</button>
+                        </div>
+                    </div>
+
+                    <div class="config-row">
+                        <label>Tavily API Key</label>
+                        <div class="config-field-row" id="tavily-row">
+                            <input type="password" id="configTavily" placeholder="tvly-..." autocomplete="new-password" disabled>
+                            <button class="config-change-btn" id="tavilyChangeBtn">Change</button>
+                        </div>
+                        <div class="config-warning">Required for online research by Agent 1's subAgent 3.</div>
+                    </div>
+
+                    <div class="config-section-divider">─ LLM Configuration ─</div>
+
+                    <div class="config-row">
+                        <label>LLM Provider</label>
+                        <select id="configProvider" class="config-select">
+                            <option value="">— Select a provider —</option>
+                            <option value="openai">OpenAI</option>
+                            <option value="anthropic">Anthropic</option>
+                            <option value="gemini">Google Gemini</option>
+                            <option value="openrouter">OpenRouter</option>
+                            <option value="xai">xAI (Grok)</option>
+                            <option value="deepseek">DeepSeek</option>
+                            <option value="groq">Groq</option>
+                            <option value="together">Together AI</option>
+                            <option value="mistral">Mistral AI</option>
+                        </select>
+                    </div>
+
+                    <div class="config-row">
+                        <label>LLM API Key</label>
+                        <div class="config-field-row" id="llmkey-row">
+                            <input type="password" id="configLlmKey" placeholder="Enter your API key..." autocomplete="new-password" disabled>
+                            <button class="config-change-btn" id="llmKeyChangeBtn">Change</button>
+                        </div>
+                        <div class="config-warning" id="llmBaseUrl">Base URL: —</div>
+                    </div>
+
+                    <div class="config-row">
+                        <label>Model</label>
+                        <input type="text" id="configModel" placeholder="e.g. gpt-4, claude-3, gemini-pro..." disabled>
+                        <div class="config-warning">Enter the model name your provider uses.</div>
+                    </div>
+
+                    <button class="config-save-btn" id="saveConfigBtn">Save Settings</button>
+                    <div class="config-status" id="configStatus"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ═══════ PDF Preview Modal ═══════ -->
+    <div class="modal-overlay" id="pdfModal" onclick="closePdfModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div class="modal-topbar">
+                <span class="modal-title" id="modalTitle">Loading...</span>
+                <div class="modal-actions">
+                    <button class="modal-btn" onclick="downloadPdf()">Download</button>
+                    <button class="modal-btn modal-x" onclick="closePdfModal()">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <div class="pdf-preview">
+                    <div class="pdf-placeholder">
+                        <div class="pdf-line hl">&gt; OpenFin Report Viewer</div>
+                        <div class="pdf-line">&gt; </div>
+                        <div class="pdf-line">&gt; Select a report or insight to preview.</div>
+                        <div class="pdf-line">&gt; </div>
+                        <div class="pdf-line hl">&gt; [ Ready ]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── JavaScript ─────────────────────────────────────────────────────── -->
+    <script src="static/js/api.js"></script>
+    <script src="static/js/sidebar.js"></script>
+    <script src="static/js/file-card.js"></script>
+    <script src="static/js/modal.js"></script>
+    <script src="static/js/chat.js"></script>
+    <script src="static/js/config.js"></script>
+    <script src="static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   OpenFin Webapp — Main CSS
+   Core layout, theme variables, CSS reset, shared components
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── CSS Reset ──────────────────────────────────────────────────────────── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Consolas, "Courier New", monospace;
+    background: var(--bg);
+    color: var(--fg);
+    transition: background 0.2s, color 0.2s;
+}
+
+input, button, textarea, select {
+    font-family: inherit;
+    color: var(--fg);
+    outline: none;
+}
+
+/* ── Theme Variables ────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+    --bg:          #0a0a0a;
+    --fg:          #e0e0e0;
+    --border:      #2a2a2a;
+    --accent:      #00cc66;
+    --hover:       #1a1a1a;
+    --active-bg:   #111111;
+}
+
+[data-theme="light"] {
+    --bg:          #f5f5f5;
+    --fg:          #1a1a1a;
+    --border:      #d0d0d0;
+    --accent:      #007744;
+    --hover:       #e8e8e8;
+    --active-bg:   #ffffff;
+}
+
+/* ── Layout Container ───────────────────────────────────────────────────── */
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* ── Sidebar (20%) ──────────────────────────────────────────────────────── */
+.sidebar {
+    width: 20%;
+    min-width: 180px;
+    padding: 20px 16px;
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+}
+
+/* ── Separator (between sidebar and main) ───────────────────────────────── */
+.separator {
+    width: 3px;
+    background: var(--border);
+    cursor: col-resize;
+}
+
+/* ── Main Content (80%) ─────────────────────────────────────────────────── */
+.main-content {
+    flex: 1;
+    padding: 24px;
+    position: relative;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Page Header ────────────────────────────────────────────────────────── */
+.page-header {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.page-header.visible {
+    display: flex;
+}
+
+.back-arrow {
+    text-decoration: none;
+    color: var(--fg);
+    font-size: 1.7rem;
+    line-height: 1;
+    transition: color 0.15s;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+}
+
+.back-arrow:hover {
+    color: var(--accent);
+}
+
+.header-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* ── Pages (SPA Router) ─────────────────────────────────────────────────── */
+.page {
+    display: none;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.page.active {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
+/* ── Empty State ────────────────────────────────────────────────────────── */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 12px;
+    opacity: 0.6;
+    text-align: center;
+}
+
+.empty-state .empty-icon {
+    font-size: 3rem;
+    color: var(--accent);
+}
+
+.empty-state .empty-text {
+    font-size: 0.95rem;
+    max-width: 400px;
+    line-height: 1.5;
+}
