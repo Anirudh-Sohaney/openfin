@@ -818,7 +818,7 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="OpenFin Webapp Server")
-    parser.add_argument('--host', default='0.0.0.0', help='Host to bind to')
+    parser.add_argument('--host', default='127.0.0.1', help='Host to bind to')
     parser.add_argument('--port', type=int, default=6161, help='Port to listen on')
     parser.add_argument('--no-agents', action='store_true',
                         help='Skip importing agent modules')
