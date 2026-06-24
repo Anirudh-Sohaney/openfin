@@ -25,3 +25,11 @@ openfin = "OpenFin.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+OpenFin = [
+    "main/webapp/index.html",
+    "main/webapp/static/**/*",
+    "main/webapp/config/*.json",
+    "main/Agent1/subAgent5/pdf_template.json",
+]
