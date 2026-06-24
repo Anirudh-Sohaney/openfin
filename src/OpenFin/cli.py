@@ -3,33 +3,28 @@
 
 import sys
 import os
-import threading
-import time
-
-_src_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _src_dir not in sys.path:
-    sys.path.insert(0, _src_dir)
-
-from OpenFin.main.webapp.server import main as _server_main
+import subprocess
 
 
 def main():
-    server_thread = threading.Thread(target=_server_main, daemon=True)
-    server_thread.start()
+    _src_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if _src_dir not in sys.path:
+        sys.path.insert(0, _src_dir)
 
-    # Brief pause to let the server bind and print its own startup messages
-    time.sleep(1)
+    from OpenFin.main.webapp import server as server_module
+    server_path = os.path.abspath(server_module.__file__)
 
-    print()
-    print("  OpenFin server started at http://127.0.0.1:6161")
-    print("  Press Ctrl+C to stop")
-    print()
+    # Launch server as a detached background process with all output suppressed
+    proc = subprocess.Popen(
+        [sys.executable, server_path],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        stdin=subprocess.DEVNULL,
+        start_new_session=True,
+    )
 
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("\nShutting down...")
+    print(f"OpenFin server started as background process (PID {proc.pid})")
+    print(f"Open http://127.0.0.1:6161 in your browser")
 
 
 if __name__ == '__main__':
